@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+
     <!--
             You are creating the "shopping cart experience" for a Online Marketplace.
             You have the list of the available books from the current API:
@@ -21,19 +28,42 @@
             10) In page "detail" show some details of the selected product (https://striveschool-api.herokuapp.com/books/1940026091 to fetch the details of a specific book)
         -->
   </head>
+  <div class="container">
+    <div class="row" id="row"></div>
+  </div>
 
   <body>
     <script>
-      const fetcher = () => {
+      const fetchData = () => {
         fetch("https://striveschool-api.herokuapp.com/books")
-          .then((response) => response.json)
+          .then((data) => data.json())
           .then((data) => {
             console.log(data);
+            const row = document.getElementById("row");
+
+            const html = data
+              .map(
+                (book) =>
+                  `
+                    <div class="col" >
+                    <img src="${book.img}" class="" />
+                    </div>
+                      `
+              )
+              .join();
+
+            row.innerHTML += html;
+            /*      row.innerHTML += `<div class="col">
+                    <img src="${data[0].img}" />
+                    </div>
+      `; */
           })
           .catch((e) => console.log(e));
       };
 
-      fetcher();
+      window.onload = () => {
+        fetchData();
+      };
     </script>
   </body>
 </html>
