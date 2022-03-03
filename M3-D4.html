@@ -41,27 +41,26 @@
             console.log(data);
             const row = document.getElementById("row");
 
+            /*   const adder = (book)=>{
+                // add style and to a cart/list
+            } */
+
             const html = data
               .map(
                 (book) =>
                   `                                        
                 <div class="card" style="width: 18rem;">
-                <img src="${book.img}" class="card-img-top" alt="...">
+                <img src="${book.img}" class="card-img-top" alt="book">
                 <div class="card-body">
                 <h5 class="card-title">${book.title}</h5>
                 <p class="card-text">${book.price}€</p>
-                <a href="#" class="btn btn-primary">Add To Cart</a>
+                <a href="#" class="btn btn-primary" onClick="adder()">Add To Cart</a>
                 </div>
                 </div>
 `
               )
               .join("");
-
             row.innerHTML += html;
-            /*      row.innerHTML += `<div class="col">
-                    <img src="${data[0].img}" />
-                    </div>
-      `; */
           })
           .catch((e) => console.log(e));
       };
