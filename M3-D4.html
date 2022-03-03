@@ -44,13 +44,18 @@
             const html = data
               .map(
                 (book) =>
-                  `
-                    <div class="col" >
-                    <img src="${book.img}" class="" />
-                    </div>
-                      `
+                  `                                        
+                <div class="card" style="width: 18rem;">
+                <img src="${book.img}" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">${book.title}</h5>
+                <p class="card-text">${book.price}€</p>
+                <a href="#" class="btn btn-primary">Add To Cart</a>
+                </div>
+                </div>
+`
               )
-              .join();
+              .join("");
 
             row.innerHTML += html;
             /*      row.innerHTML += `<div class="col">
