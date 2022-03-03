@@ -34,7 +34,7 @@
 
   <body>
     <script>
-      const fetchData = () => {
+      const loadData = () => {
         fetch("https://striveschool-api.herokuapp.com/books")
           .then((data) => data.json())
           .then((data) => {
@@ -46,6 +46,7 @@
             } */
 
             const html = data
+              //.filter((book)=> book.title=== TEXT INPUT )
               .map(
                 (book) =>
                   `                                        
@@ -66,7 +67,7 @@
       };
 
       window.onload = () => {
-        fetchData();
+        loadData();
       };
     </script>
   </body>
